@@ -1,0 +1,26 @@
+<!-- PRproductos/templates/editar_categoria.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Categoría</title>
+</head>
+<body>
+    <h1>Editar Categoría</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" value="{{ categoria.nombre }}" required><br>
+        
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" name="descripcion" required>{{ categoria.descripcion }}</textarea><br>
+        
+        <button type="submit">Actualizar Categoría</button>
+    </form>
+    <a href="{% url 'lista_categorias' %}">Cancelar</a>
+</body>
+</html>
+
+
+
+

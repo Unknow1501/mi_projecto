@@ -1,0 +1,30 @@
+<!-- PRproductos/templates/categorias.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Categorías</title>
+</head>
+<body>
+    <h1>Lista de Categorías</h1>
+    <a href="{% url 'crear_categoria' %}">Crear Nueva Categoría</a>
+    <ul>
+        {% for categoria in categorias %}
+            <li>
+                <strong>{{ categoria.nombre }}</strong><br>
+                {{ categoria.descripcion }}<br>
+                <a href="{% url 'detalle_categoria' categoria.pk %}">Ver</a>
+                <a href="{% url 'editar_categoria' categoria.pk %}">Editar</a>
+                <form action="{% url 'borrar_categoria' categoria.pk %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">Borrar</button>
+                </form>
+            </li>
+        {% empty %}
+            <li>No hay categorías disponibles.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
+
